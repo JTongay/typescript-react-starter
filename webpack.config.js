@@ -60,6 +60,11 @@ const makeWebpackConfig = (production) => ({
           }
         ]
       },
+      // sass
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      },
       // static assets
       { test: /\.html$/, use: 'html-loader' },
       { test: /\.(a?png|svg)$/, use: 'url-loader?limit=10000' },

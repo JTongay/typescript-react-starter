@@ -6,7 +6,8 @@ afterEach(cleanup);
 
 describe('Home', () => {
   it('should exist', () => {
-    expect(Home).toBeDefined();
+    const comp = render(<Home />);
+    expect(comp).toBeDefined();
   });
 
   it('should booyah', () => {

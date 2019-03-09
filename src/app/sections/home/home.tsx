@@ -1,5 +1,7 @@
 import { Typography } from '@material-ui/core';
 import * as React from 'react';
+import Fetch from 'react-fetch-component';
+import './home.scss';
 
 interface IHomeState {
   countryResult: any;
@@ -22,12 +24,18 @@ export class Home extends React.Component<{}, IHomeState> {
   public render(): JSX.Element {
     window.console.log(this.props);
     return (
-      <React.Fragment>
-        <Typography variant="h1" color="primary">
-          Booyah
-        </Typography>
-        <h1 color="primary">Booyah</h1>
-      </React.Fragment>
+      <Fetch url="https://pokeapi.co/api/v2/pokemon/ditto/">
+        {({ loading, error, data }) => {
+          return (
+            <React.Fragment>
+              <Typography variant="h1" color="primary">
+                Booyah
+              </Typography>
+              <h1 color="primary">Booyah</h1>
+            </React.Fragment>
+          );
+        }}
+      </Fetch>
     );
   }
 }
