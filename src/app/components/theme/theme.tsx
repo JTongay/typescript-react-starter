@@ -4,16 +4,8 @@ import red from '@material-ui/core/colors/red';
 import { Main } from 'app/main';
 import * as React from 'react';
 
-export class AppTheme extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    return (
-      <MuiThemeProvider theme={this.getTheme()}>
-        <Main />
-      </MuiThemeProvider>
-    );
-  }
-
-  private getTheme(): any {
+const AppTheme: React.FC<{}> = () => {
+  const getTheme = () => {
     return createMuiTheme({
       palette: {
         primary: {
@@ -22,7 +14,7 @@ export class AppTheme extends React.Component<{}, {}> {
         secondary: {
           main: red[900]
         },
-        type: 'dark'
+        type: 'light'
       },
       spacing: {
         unit: 16
@@ -31,5 +23,13 @@ export class AppTheme extends React.Component<{}, {}> {
         useNextVariants: true
       }
     });
-  }
-}
+  };
+
+  return (
+    <MuiThemeProvider theme={getTheme()}>
+      <Main />
+    </MuiThemeProvider>
+  );
+};
+
+export default AppTheme;

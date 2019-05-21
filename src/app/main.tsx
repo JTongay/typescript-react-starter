@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { HashRouter } from 'react-router-dom';
 import { App } from './';
-import { Nav } from './components';
+
+const Nav = React.lazy(() => import('app/components/nav/nav'));
 
 export class Main extends React.Component {
   public render(): React.ReactFragment {

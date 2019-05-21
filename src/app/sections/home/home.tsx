@@ -1,41 +1,37 @@
 import { Typography } from '@material-ui/core';
+import useAxios from 'axios-hooks';
 import * as React from 'react';
-import Fetch from 'react-fetch-component';
+// import { RouteComponentProps } from 'react-router';
 import './home.scss';
 
-interface IHomeState {
-  countryResult: any;
-  countrySearch: string;
-  loading: boolean;
-  error: boolean;
-}
-
-export class Home extends React.Component<{}, IHomeState> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      countryResult: null,
-      countrySearch: '',
-      error: false,
-      loading: false
-    };
+const HomeData: React.FC = () => {
+  const [{ data, loading, error }, refetch] = useAxios('https://pokeapi.co/api/v2/pokemon/ditto/');
+  if (loading) {
+    return <span>loading...</span>;
   }
-
-  public render(): JSX.Element {
-    window.console.log(this.props);
-    return (
-      <Fetch url="https://pokeapi.co/api/v2/pokemon/ditto/">
-        {({ loading, error, data }) => {
-          return (
-            <React.Fragment>
-              <Typography variant="h1" color="primary">
-                Booyah
-              </Typography>
-              <h1 color="primary">Booyah</h1>
-            </React.Fragment>
-          );
-        }}
-      </Fetch>
-    );
+  if (error) {
+    // Set up your error boundary and throw that error here
+    return null;
   }
-}
+  return (
+    <React.Fragment>
+      <button onClick={refetch}>Refresh!</button>
+      <span>{data.name}</span>
+    </React.Fragment>
+  );
+};
+
+const Home: React.FC<any> = (props) => {
+  return (
+    <section className="home-section">
+      <Typography variant="h1" color="primary">
+        Booyah
+      </Typography>
+      <React.Suspense fallback={<span>loading...</span>}>
+        <HomeData />
+      </React.Suspense>
+    </section>
+  );
+};
+
+export default Home;
