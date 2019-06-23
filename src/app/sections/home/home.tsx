@@ -1,7 +1,7 @@
 import { Typography } from '@material-ui/core';
 import useAxios from 'axios-hooks';
 import * as React from 'react';
-// import { RouteComponentProps } from 'react-router';
+import { RouteComponentProps } from 'react-router';
 import './home.scss';
 
 const HomeData: React.FC = () => {
@@ -22,11 +22,13 @@ const HomeData: React.FC = () => {
 };
 
 const Home: React.FC<any> = (props) => {
+  // console.log(useAxios);
   return (
     <section className="home-section">
       <Typography variant="h1" color="primary">
         Booyah
       </Typography>
+      <HomeData />
       <React.Suspense fallback={<span>loading...</span>}>
         <HomeData />
       </React.Suspense>

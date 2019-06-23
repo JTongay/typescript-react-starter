@@ -12,6 +12,6 @@ declare module '*.svg' {
   export = image;
 }
 
-declare module 'axios-hooks' {
-  export default function useAxios(request: any): any;
-}
+// declare module 'axios-hooks' {
+//   export default function useAxios(config: any | string): [any, any];
+// }

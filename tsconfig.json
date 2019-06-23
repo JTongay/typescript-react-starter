@@ -12,6 +12,7 @@
     "rootDir": "src",
     "noImplicitReturns": true,
     "noUnusedLocals": true,
+    "noUnusedParameters": false,
     "strict": true,
     "outDir": "build",
     "lib": [
