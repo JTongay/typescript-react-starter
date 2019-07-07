@@ -7,12 +7,13 @@ const HomeData: React.FC = () => {
   const { data, error } = useFetch('https://pokeapi.co/api/v2/pokemon/ditto/');
   if (error) {
     // Set up your error boundary and throw that error here
-    return <p>you dun goofed</p>;
+    throw Error();
   }
   if (!data) {
     return null;
   }
   return <span>{data.name}</span>;
+  // throw Error();
 };
 
 const Home: React.FC<any> = (props) => {
