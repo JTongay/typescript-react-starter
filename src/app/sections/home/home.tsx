@@ -1,37 +1,31 @@
 import { Typography } from '@material-ui/core';
-import useAxios from 'axios-hooks';
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router';
+import { useFetch } from 'react-hooks-fetch';
 import './home.scss';
 
 const HomeData: React.FC = () => {
-  const [{ data, loading, error }, refetch] = useAxios('https://pokeapi.co/api/v2/pokemon/ditto/');
-  if (loading) {
-    return <span>loading...</span>;
-  }
+  const { data, error } = useFetch('https://pokeapi.co/api/v2/pokemon/ditto/');
   if (error) {
     // Set up your error boundary and throw that error here
+    return <p>you dun goofed</p>;
+  }
+  if (!data) {
     return null;
   }
-  return (
-    <React.Fragment>
-      <button onClick={refetch}>Refresh!</button>
-      <span>{data.name}</span>
-    </React.Fragment>
-  );
+  return <span>{data.name}</span>;
 };
 
 const Home: React.FC<any> = (props) => {
-  // console.log(useAxios);
   return (
     <section className="home-section">
       <Typography variant="h1" color="primary">
         Booyah
       </Typography>
-      <HomeData />
-      <React.Suspense fallback={<span>loading...</span>}>
-        <HomeData />
-      </React.Suspense>
+      <React.StrictMode>
+        <React.Suspense fallback={<span>loading...</span>}>
+          <HomeData />
+        </React.Suspense>
+      </React.StrictMode>
     </section>
   );
 };

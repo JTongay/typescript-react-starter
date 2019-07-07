@@ -6,12 +6,20 @@ afterEach(cleanup);
 
 describe('Home', () => {
   it('should exist', () => {
-    const comp = render(<Home />);
+    const comp = render(
+      <React.Suspense fallback={<p>Loading...</p>}>
+        <Home />
+      </React.Suspense>
+    );
     expect(comp).toBeDefined();
   });
 
   it('should booyah', () => {
-    const comp = render(<Home />);
+    const comp = render(
+      <React.Suspense fallback={<p>Loading...</p>}>
+        <Home />
+      </React.Suspense>
+    );
     expect(comp.getByText('Booyah').textContent).toEqual('Booyah');
   });
 });
