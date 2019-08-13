@@ -8,7 +8,7 @@
     "deploy": "gh-pages -d build",
     "test": "karma start --single-run",
     "start": "run-p watch",
-    "build": "webpack -p --progress --colors",
+    "build": "webpack -p --progress --colors --mode production",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,css}\"",
     "watch": "run-p watch:*",
     "watch:webpack": "webpack-dev-server --mode development --hot --progress --color --port 3000 --open",

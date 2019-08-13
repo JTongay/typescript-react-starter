@@ -18,7 +18,7 @@ app.get('/test', (req, res, next) => {
 
 app.get('/', (req, res, next) => {
   console.log('sending base index.html file');
-  res.sendFile(`${__dirname}/build/index.html`);
+  res.sendFile(`index.html`);
 });
 
 io.on('connection', (socket) => {
