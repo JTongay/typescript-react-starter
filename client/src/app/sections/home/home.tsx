@@ -1,6 +1,7 @@
 import { Typography } from '@material-ui/core';
 import * as React from 'react';
 import { useFetch } from 'react-hooks-fetch';
+import { Link } from 'react-router-dom';
 import './home.scss';
 
 const HomeData: React.FC = () => {
@@ -27,6 +28,7 @@ const Home: React.FC<any> = (props) => {
           <HomeData />
         </React.Suspense>
       </React.StrictMode>
+      <Link to="login">Login</Link>
     </section>
   );
 };

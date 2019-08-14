@@ -11,6 +11,7 @@ app.use(cors({
   origin: 'http://localhost:3000'
 }));
 
+
 app.get('/test', (req, res, next) => {
   console.log('hitting test endpoint');
   res.json({ message: 'howdy' }).status(200);
@@ -22,7 +23,7 @@ app.get('/', (req, res, next) => {
 });
 
 io.on('connection', (socket) => {
-  socket.emit('test', { hello: 'howdy howdy howdy'});
+  socket.emit('test', { hello: 'wat'});
   socket.on('recieve', (data) => {
     console.log(data, 'data from client');
   });
